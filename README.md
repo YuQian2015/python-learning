@@ -57,7 +57,6 @@ print('a' * 10)
 ```python
 price = 10
 print(price)
-
 # 输出结果：10
 # 不能使用 print('price')，这将输出一串字符
 ```
@@ -71,7 +70,6 @@ print(price)
 ```python
 name = "Bro"
 print(type(name))
-
 # 输出结果：<class 'str'>
 ```
 
@@ -90,7 +88,6 @@ print(name)
 print(type(name))
 print(is_published)
 print(type(is_published))
-
 # 输出结果：
 # 100
 # <class 'int'>
@@ -143,7 +140,9 @@ Python 预置了一些函数来进行类型转换：
 - `float()` - 转换成浮点型
 - `bool()` - 转成布尔型
 
-### 字符串
+## 字符串
+
+### 字符串定义
 
 ```python
 course = "Python's Course for Beginners"  # 显示单引号
@@ -151,18 +150,44 @@ course2 = 'Python for "Beginners"'  # 显示双引号
 course3 = 'Python\'s Course for Beginners'  # 显示单引号
 
 print(course)
+# 输出结果：Python's Course for Beginners
 print(course2)
+# 输出结果：Python for "Beginners"
 print(course3)
+# 输出结果：Python's Course for Beginners
+
+```
+
+### 根据index获取字符串
+
+```python
+course = "Python's Course for Beginners"  # 显示单引号
+course2 = 'Python for "Beginners"'  # 显示双引号
+course3 = 'Python\'s Course for Beginners'  # 显示单引号
+
 print(course[0])  # 获取第一个字符
 print(course[-1])  # 获取倒数第一个字符
-print(course[0:3])  # 获取第一个到第三个的字符，不包含course[3]
+print(course[0:3])  # 获取第一个到第三个字符，不包含course[3]
 print(course[1:])  # 获取从第二个到最后一个的字符串
-print(course[0:5])  # 获取前五个字符
+print(course[:5])  # 获取前五个字符, 相当于print(course[0:5])
 print(course[:])  # 相当于复制一个字符串
+# 输出结果：
+# P
+# s
+# Pyt
+# ython's Course for Beginners
+# Pytho
+# Python's Course for Beginners
+
 
 name = 'Jennifer'
 print(name[1:-1])
+# 输出结果：ennife
+```
 
+### 多行字符串
+
+```python
 # 显示多行文本
 email = '''
 Hi John,
@@ -174,5 +199,152 @@ The support team
 
 '''
 print(email)
+# 输出结果：
+# Hi John,
+# 
+# Here is out first email to you.
+# 
+# Thank you,
+# The support team
+# 
+```
+
+如果想要使用变量动态的更改一串字符的内容，使用格式化字符串将会非常有效，使用方式就是用 `f''` 包含你的字符串，然后使用 `{}` 来插入变量：
+
+```python
+firstname = 'John'
+lastname = 'Smith'
+
+message = firstname + ' [' + lastname + '] is a coder'
+msg = f'{firstname} [{lastname}] is a coder'
+
+print(message)
+print(msg)
+# 输出结果：
+# John [Smith] is a coder
+# John [Smith] is a coder
+```
+
+字符串长度：
+
+```python
+course = 'Python for Beginners'
+print(len(course))
+# 输出结果：20
+```
+
+`len()` 是 Python 内建的一个函数，可以用来计算字符串的长度，或者计算数组的长度。
+
+### 字符串方法
+
+- `upper()` - 转大写，返回新的字符串
+- `lower()` - 转小写，返回新的字符串
+- `find()` - 查找字符，返回字符所在的index
+- `replace()` - 替换字符，返回新的字符串
+- `in` - 判断字符串是否存在，返回布尔值
+
+```python
+course = 'Python for Beginners'
+print(course.upper())
+# 输出结果：PYTHON FOR BEGINNERS
+
+print(course.lower())
+# 输出结果：python for beginners
+
+print(course.find('P'))
+print(course.find('o'))
+print(course.find('O'))
+print(course.find('Beginners'))
+# 输出结果：
+# 0
+# 4
+# -1
+# 11
+
+print(course.replace('Beginners', 'Absolute Beginners'))
+# 输出结果：Python for Absolute Beginners
+print(course.replace('beginners', 'Absolute Beginners')) # 替换不会生效，大小写需要匹配
+
+print('Python' in course)
+# 输出结果：True
+print('python' in course)
+# 输出结果：False
+
+print(course)
+# 输出结果：Python for Beginners
+```
+
+上面的方法不会修改原字符串，而是创建了新的字符串。
+
+## 运算符
+
+### 运算符号
+
+- `+` - 加法
+- `-` - 减法
+- `*` - 乘法
+- `/` - 除法
+- `//` - 除法并获取整数部分
+- `%` - 获取余数
+- `**` - 次方
+
+```python
+print(10 + 3)
+print(10 - 3)
+print(10 * 3)
+print(10 / 3)
+print(10 // 3)
+print(10 % 3)
+print(10 ** 3)
+# 输出结果：
+# 13
+# 7
+# 30
+# 3.3333333333333335
+# 3
+# 1
+# 1000
+
+x = 10
+x = 10 + 3
+print(x)
+# 输出结果：13
+
+x = 10
+x += 3
+print(x)
+# 输出结果：13
+```
+
+### 运算优先级
+
+运算符优先级，次方最高、乘除其次、加减最低，括号 `()` 里面的运算优先：
+
+```python
+print(10 + 3 * 2 ** 2)
+# 输出结果：22
+
+print((10 + 3) * 2 ** 2)
+# 输出结果：52
+```
+
+### 运算函数
+
+Python内建的函数和math模块，Python中的模块就是单独的可重复利用的代码：
+
+```python
+import math
+print(round(2.9))
+print(round(2.5))
+print(abs(-2.5))
+
+print(math.floor(2.5))
+print(math.ceil(2.5))
+# 输出结果：
+# 3
+# 2
+# 2.5
+# 2
+# 3
 ```
 
